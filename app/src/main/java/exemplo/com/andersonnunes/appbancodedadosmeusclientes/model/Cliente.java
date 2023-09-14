@@ -1,4 +1,4 @@
-package exemplo.com.andersonnunes.appbancodedadosmeusclientes;
+package exemplo.com.andersonnunes.appbancodedadosmeusclientes.model;
 
 public class Cliente {
 

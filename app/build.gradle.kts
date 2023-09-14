@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("realm-android")
 }
 
 android {
@@ -13,7 +14,6 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -33,6 +33,7 @@ android {
 
 dependencies {
 
+    implementation("io.realm:realm-gradle-plugin:10.11.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

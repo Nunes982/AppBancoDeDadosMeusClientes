@@ -1,4 +1,4 @@
-package exemplo.com.andersonnunes.appbancodedadosmeusclientes;
+package exemplo.com.andersonnunes.appbancodedadosmeusclientes.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import exemplo.com.andersonnunes.appbancodedadosmeusclientes.model.Cliente;
 
 public class AppDataBase extends SQLiteOpenHelper {
 
