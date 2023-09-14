@@ -1,8 +1,8 @@
 package exemplo.com.andersonnunes.appbancodedadosmeusclientes.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.R;
 
