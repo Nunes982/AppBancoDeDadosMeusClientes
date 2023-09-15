@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         ClienteORM orm;
 
-        for (int i = 2; i < 35; i++) {
+        for (int i = 21; i < 33; i++) {
 
             orm = new ClienteORM();
 
@@ -31,12 +31,11 @@ public class MainActivity extends AppCompatActivity {
             orm.setIdade(2*i);
             orm.setPreco(100*i);
             orm.setSalario(25*i);
-            orm.setDataCadastro("20/09/2023");
-            orm.setHoraCadastro("20:20");
+            orm.setDataCadastro("15/09/2023");
+            orm.setHoraCadastro("14:05");
             orm.setAtivo(true);
 
             clienteORMController.insert(orm);
-
         }
     }
 }

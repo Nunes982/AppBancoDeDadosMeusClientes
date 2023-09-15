@@ -4,6 +4,7 @@ import android.util.Log;
 
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.model.ClienteORM;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class ClienteORMController {
 
@@ -48,6 +49,39 @@ public class ClienteORMController {
             realm.commitTransaction();
 
         }
+        realm.close();
+
+    }
+
+    public void delete(ClienteORM obj){
+
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+
+        RealmResults<ClienteORM> results = realm.where(ClienteORM.class).equalTo("id",
+                obj.getId()).findAll();
+
+        results.deleteAllFromRealm();
+
+        realm.commitTransaction();
+
+        realm.close();
+
+    }
+    public void deleteByID(int id){
+
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+
+        RealmResults<ClienteORM> results = realm.where(ClienteORM.class).equalTo("id",
+                id).findAll();
+
+        results.deleteAllFromRealm();
+
+        realm.commitTransaction();
+
         realm.close();
 
     }
