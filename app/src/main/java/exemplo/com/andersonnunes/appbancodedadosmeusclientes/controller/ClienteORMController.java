@@ -34,6 +34,7 @@ public class ClienteORMController {
         clienteORM.setNome(obj.getNome());
         clienteORM.setSalario(obj.getSalario());
         clienteORM.setPreco(obj.getPreco());
+        clienteORM.setIdade(obj.getIdade());
         clienteORM.setDataCadastro(obj.getDataCadastro());
         clienteORM.setHoraCadastro(obj.getHoraCadastro());
         clienteORM.setAtivo(obj.isAtivo());
