@@ -1,5 +1,7 @@
 package exemplo.com.andersonnunes.appbancodedadosmeusclientes.controller;
 
+import android.util.Log;
+
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.model.ClienteORM;
 import io.realm.Realm;
 
@@ -11,7 +13,7 @@ public class ClienteORMController {
 
         Number primaryKey = realm.where(ClienteORM.class).max("id");
 
-        final int autoIncrementPrimaryKey = (primaryKey == null) ? 1 : primaryKey.intValue();
+        final int autoIncrementPrimaryKey = (primaryKey == null) ? 1 : primaryKey.intValue() +1;
 
         obj.setId(autoIncrementPrimaryKey);
 
@@ -19,6 +21,8 @@ public class ClienteORMController {
         realm.copyToRealm(obj);
         realm.commitTransaction();
         realm.close();
+
+        Log.d("db_log","insert: "+obj.getId());
 
     }
 
@@ -29,17 +33,21 @@ public class ClienteORMController {
         ClienteORM clienteORM = realm.where(ClienteORM.class).equalTo("id", obj.getId())
                 .findFirst();
 
-        realm.beginTransaction();
+        if (clienteORM != null) {
 
-        clienteORM.setNome(obj.getNome());
-        clienteORM.setSalario(obj.getSalario());
-        clienteORM.setPreco(obj.getPreco());
-        clienteORM.setIdade(obj.getIdade());
-        clienteORM.setDataCadastro(obj.getDataCadastro());
-        clienteORM.setHoraCadastro(obj.getHoraCadastro());
-        clienteORM.setAtivo(obj.isAtivo());
+            realm.beginTransaction();
 
-        realm.commitTransaction();
+            clienteORM.setNome(obj.getNome());
+            clienteORM.setSalario(obj.getSalario());
+            clienteORM.setPreco(obj.getPreco());
+            clienteORM.setIdade(obj.getIdade());
+            clienteORM.setDataCadastro(obj.getDataCadastro());
+            clienteORM.setHoraCadastro(obj.getHoraCadastro());
+            clienteORM.setAtivo(obj.isAtivo());
+
+            realm.commitTransaction();
+
+        }
         realm.close();
 
     }
