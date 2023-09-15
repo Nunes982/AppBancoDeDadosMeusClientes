@@ -2,9 +2,13 @@ package exemplo.com.andersonnunes.appbancodedadosmeusclientes.controller;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.model.ClienteORM;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.exceptions.RealmException;
 
 public class ClienteORMController {
 
@@ -84,6 +88,32 @@ public class ClienteORMController {
 
         realm.close();
 
+    }
+
+    public List<ClienteORM> listar(){
+
+        Realm realm = null;
+
+        RealmResults<ClienteORM> results = null;
+
+        List<ClienteORM> list = new ArrayList<>();
+
+        try{
+
+            realm = Realm.getDefaultInstance();
+
+            results = realm.where(ClienteORM.class).findAll();
+
+            list = realm.copyFromRealm(results);
+
+        }catch (RealmException e){
+
+        }finally {
+            realm.close();
+        }
+
+
+        return  list;
     }
 
 }

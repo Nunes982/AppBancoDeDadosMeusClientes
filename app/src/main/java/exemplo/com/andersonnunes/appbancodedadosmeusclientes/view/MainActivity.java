@@ -2,8 +2,11 @@ package exemplo.com.andersonnunes.appbancodedadosmeusclientes.view;
 
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.R;
 import exemplo.com.andersonnunes.appbancodedadosmeusclientes.controller.ClienteORMController;
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     ClienteORMController clienteORMController;
 
+    List<ClienteORM> listaDeClientes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
         clienteORMController = new ClienteORMController();
 
-        ClienteORM orm;
+/*        ClienteORM orm;
 
-        for (int i = 21; i < 33; i++) {
+        for (int i = 1; i < 21; i++) {
 
             orm = new ClienteORM();
 
@@ -36,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
             orm.setAtivo(true);
 
             clienteORMController.insert(orm);
+        }*/
+
+        clienteORMController.listar();
+
+        for (ClienteORM obj: listaDeClientes) {
+
+            Log.d("db_log","onCreate: "+obj.getId()+" "+obj.getNome());
+
         }
+
     }
 }
